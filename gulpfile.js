@@ -1,12 +1,25 @@
 process.env.DISABLE_NOTIFIER = true;
 
-var gulp = require('gulp');
-var gulpjs  = require('./taskmodules/_gulpjs.js');
+var gulp        = require('gulp');
+var gulpjs      = require('./taskmodules/_gulpjs.js');
+var gulpsass     = require('./taskmodules/_gulpsass.js');
 
 gulp.task('default', function(done) {
 
-    gulpjs.getBrowserifyMinifySourcemap('src/js/main.js', 'all.min.js', 'dist/js/', false, true)(function() {
+    gulpjs.getBrowserifyMinifySourcemap('src/js/main.js', 'main.js', 'dist/js/', false, false)(function() {
         console.log("JS COMPLETE");
+    });
+
+    gulpjs.getBrowserifyMinifySourcemap('src/js/main.js', 'main.prod.js', 'dist/js/', true, true)(function() {
+        console.log("JS COMPLETE");
+    });
+
+    gulpsass.getMinifySourcemap('src/scss/main.scss', 'main.css', 'dist/css/', false, false)(function() {
+        console.log("CSS COMPLETE")
+    });
+
+    gulpsass.getMinifySourcemap('src/scss/main.scss', 'main.prod.css', 'dist/css/', true, true)(function() {
+        console.log("CSS COMPLETE")
     });
 
     // async.series([
