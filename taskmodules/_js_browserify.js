@@ -1,6 +1,6 @@
 "use strict";
 
-var gulp_js = (function() {
+var _js_browserify = (function() {
 
     var browserify = require('browserify');
     var gulp = require('gulp');
@@ -13,7 +13,7 @@ var gulp_js = (function() {
     var colors = require('colors');
 
     var _fact = {
-        getBrowserifyMinifySourcemap: function(sourceFile, outputFile, outputPath, isAsync, production) {
+        create: function(sourceFile, outputFile, outputPath, isAsync, production) {
             return function(callback) {
                 console.log("JS:".yellow, "Start".red);
 
@@ -30,6 +30,7 @@ var gulp_js = (function() {
                 });
 
                 return b.bundle()
+                    .on('error', gutil.log)
                     .pipe(source(outputFile))
                     .pipe(buffer())
                     .pipe(gif(!production, sourcemaps.init({loadMaps: true})))
@@ -40,27 +41,15 @@ var gulp_js = (function() {
                     .on('finish', function() {
                         console.log("JS:".yellow, "Done".green);
                         if (!isAsync && callback) {
-                            //console.timeEnd(' '.green);
                             callback();
                         }
                     });
             };
-        },
-
-        getMinifySourcemap: function(sourceFile, outputFile, outputPath, isAsync, production) {
-            return function(callback) {
-                console.log("JS:".yellow, "Start".red);
-
-                isAsync = isAsync || false;
-                production = production || false;
-
-            };
         }
-
     };
 
     return _fact;
 
 })();
 
-module.exports = gulp_js;
+module.exports = _js_browserify;

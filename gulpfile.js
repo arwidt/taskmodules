@@ -1,54 +1,29 @@
 process.env.DISABLE_NOTIFIER = true;
 
-var gulp        = require('gulp');
-var gulpjs      = require('./taskmodules/_gulpjs.js');
-var gulpsass     = require('./taskmodules/_gulpsass.js');
+var gulp            = require('gulp');
+var async           = require('async');
+
+var js_browserify   = require('./taskmodules/_js_browserify.js');
+var style_sass      = require('./taskmodules/_style_sass.js');
+var svg_iconfont    = require('./taskmodules/_util_svg_iconfont.js');
 
 gulp.task('default', function(done) {
 
-    gulpjs.getBrowserifyMinifySourcemap('src/js/main.js', 'main.js', 'dist/js/', false, false)(function() {
-        console.log("JS COMPLETE");
-    });
+    async.series([
+        svg_iconfont.create('assets/icons/', '_icon-font', 'src/scss/iconfont/', '_icon-font.scss', true, false),
+        js_browserify.create('src/js/main.js', 'main.js', 'dist/js/', false, false),
+        style_sass.create('src/scss/main.scss', 'main.scss', 'dist/css/', false, false)
+    ], function() {
+        console.log("SERIES COMPLETE");
 
-    gulpjs.getBrowserifyMinifySourcemap('src/js/main.js', 'main.prod.js', 'dist/js/', true, true)(function() {
-        console.log("JS COMPLETE");
-    });
+        async.parallel([
+            svg_iconfont.create('assets/icons/', '_icon-font', 'src/scss/iconfont/', '_icon-font.scss', true, false),
+            js_browserify.create('src/js/main.js', 'main.js', 'dist/js/', false, false),
+            style_sass.create('src/scss/main.scss', 'main.scss', 'dist/css/', false, false)
+        ], function() {
+            console.log("PARALLEL COMPLETE");
+        });
 
-    gulpsass.getMinifySourcemap('src/scss/main.scss', 'main.css', 'dist/css/', false, false)(function() {
-        console.log("CSS COMPLETE")
     });
-
-    gulpsass.getMinifySourcemap('src/scss/main.scss', 'main.prod.css', 'dist/css/', true, true)(function() {
-        console.log("CSS COMPLETE")
-    });
-
-    // async.series([
-    //     remove.reset(),
-    //     copy.sasslibs(),
-    //     style.icons(),
-    //     style.inline_base64()
-    // ], function() {
-    //
-    //     var tasks = [];
-    //     tasks.push(style.sass('main_latin.scss'));
-    //     if (argv.production) {
-    //         tasks.push(style.sass('main_greek.scss'));
-    //         tasks.push(style.sass('main_cyrillic.scss'));
-    //         tasks.push(style.sass('main_latinextended.scss'));
-    //     }
-    //     tasks.push(script.js(argv.production));
-    //
-    //     async.parallel(tasks, function() {
-    //
-    //         async.parallel([
-    //             copy.fonts(argv.production),
-    //             copy.locale(argv.production),
-    //             copy.adsDebug(),
-    //             copy.images()
-    //         ], done);
-    //
-    //     });
-    //
-    // });
 
 });

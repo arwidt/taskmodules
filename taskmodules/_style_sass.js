@@ -1,6 +1,6 @@
 "use strict";
 
-var gulp_sass = (function() {
+var _style_sass = (function() {
 
     var gulp            = require('gulp');
     var sass            = require('gulp-sass');
@@ -11,7 +11,7 @@ var gulp_sass = (function() {
     var cssnano         = require('gulp-cssnano');
 
     var _fact = {
-        getMinifySourcemap: function(sourceFile, outputFile, outputPath, isAsync, production) {
+        create: function(sourceFile, outputFile, outputPath, isAsync, production) {
             return function(callback) {
                 console.log("STYLE: Sass:".magenta, "[" + sourceFile + "]",  "Start".red);
 
@@ -54,4 +54,4 @@ var gulp_sass = (function() {
 
 })();
 
-module.exports = gulp_sass;
+module.exports = _style_sass;
