@@ -1,6 +1,5 @@
-"use strict";
-
 var _style_sass = (function() {
+    "use strict";
 
     var gulp            = require('gulp');
     var sass            = require('gulp-sass');
@@ -13,7 +12,6 @@ var _style_sass = (function() {
     var _fact = {
         create: function(sourceFile, outputFile, outputPath, isAsync, production) {
             return function(callback) {
-                console.log("STYLE: Sass:".magenta, "[" + sourceFile + "]",  "Start".red);
 
                 isAsync = isAsync || false;
                 production = production || false;
@@ -40,7 +38,6 @@ var _style_sass = (function() {
                     .pipe(rename(outputFile))
                     .pipe(gulp.dest(outputPath))
                     .on('finish', function() {
-                        console.log("STYLE: Sass:".magenta, "[" + outputPath + "" + outputFile + "]",  "Complete".green);
                         if (!isAsync && callback) {
                             callback();
                         }

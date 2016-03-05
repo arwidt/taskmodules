@@ -50,7 +50,6 @@ var _util_svg_iconfont = (function() {
     var _fact = {
         create: function(sourcePath, fontName, outputPath, outputFile, base64encode, isAsync) {
             return function(callback) {
-                console.log("SVG ICONS:".magenta,  "Start".red);
 
                 fontName = fontName || "_icon-font";
                 isAsync = isAsync || false;
@@ -87,7 +86,6 @@ var _util_svg_iconfont = (function() {
                     .on('finish', function() {
                         fs.unlinkSync(sourcePath + templateDefaultFileName);
                         if (callback) {
-                            console.log("SVG ICONS:".magenta, "Complete".green);
                             callback();
                         }
                     });

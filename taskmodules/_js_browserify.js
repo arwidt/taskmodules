@@ -1,6 +1,5 @@
-"use strict";
-
 var _js_browserify = (function() {
+    "use strict";
 
     var browserify = require('browserify');
     var gulp = require('gulp');
@@ -10,13 +9,10 @@ var _js_browserify = (function() {
     var sourcemaps = require('gulp-sourcemaps');
     var gutil = require('gulp-util');
     var gif = require('gulp-if');
-    var colors = require('colors');
 
     var _fact = {
         create: function(sourceFile, outputFile, outputPath, isAsync, production) {
             return function(callback) {
-                console.log("JS:".yellow, "Start".red);
-
                 isAsync = isAsync || false;
                 production = production || false;
 
@@ -24,22 +20,27 @@ var _js_browserify = (function() {
                     callback();
                 }
 
+                var onError = function (err) {
+                    gutil.beep();
+                    gutil.log(err);
+                    this.emit('end');
+                };
+
                 var b = browserify({
                     entries: sourceFile,
                     debug: true
                 });
 
                 return b.bundle()
-                    .on('error', gutil.log)
+                    .on('error', onError)
                     .pipe(source(outputFile))
                     .pipe(buffer())
                     .pipe(gif(!production, sourcemaps.init({loadMaps: true})))
                     .pipe(uglify())
-                    .on('error', gutil.log)
+                    .on('error', onError)
                     .pipe(gif(!production, sourcemaps.write('./')))
                     .pipe(gulp.dest(outputPath))
                     .on('finish', function() {
-                        console.log("JS:".yellow, "Done".green);
                         if (!isAsync && callback) {
                             callback();
                         }
