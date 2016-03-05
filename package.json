@@ -1,6 +1,6 @@
 {
   "name": "taskmodules",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Tasks wrapped in factories for easier use in special cases.",
   "keywords": [
     "gulp",
