@@ -22,6 +22,7 @@ gulp.task('default', function(done) {
             style_sass.create('src/scss/main.scss', 'main.scss', 'dist/css/', false, false)
         ], function() {
             console.log("PARALLEL COMPLETE");
+            done();
         });
 
     });
