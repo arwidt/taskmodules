@@ -1,13 +1,17 @@
 {
   "name": "taskmodules",
   "version": "1.0.4",
-  "description": 'Tasks wrapped in factories for easier use in special cases.',
-  keywords: ["gulp", "task", "modules", "module", "factory"],
-  files: [
-    'index.js',
-    'taskmodules/_js_browserify.js',
-    'taskmodules/_style_sass.js',
-    'taskmodules/_utils_svg_iconfont.js',
+  "description": "Tasks wrapped in factories for easier use in special cases.",
+  "keywords": [
+    "gulp",
+    "task",
+    "modules",
+    "module",
+    "factory"
+  ],
+  "files": [
+    "index.js",
+    "taskmodules/"
   ],
   "main": "index.js",
   "scripts": {
@@ -15,6 +19,12 @@
   },
   "author": "Arwid Thornström (arwidt@gmail.com)",
   "license": "ISC",
+  "maintainers": [
+    {
+      "email": "arwidt@gmail.com",
+      "name": "arwidt"
+    }
+  ],
   "dependencies": {
     "browserify": "^13.0.0",
     "gulp": "^3.9.0",
