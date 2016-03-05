@@ -1,7 +1,8 @@
 {
   "name": "taskmodules",
   "version": "1.0.4",
-  "description": "Tasks wrapped in factories for easier use in async environment.",
+  "description": "Tasks wrapped in factories for easier use in special cases.",
+  keywords: ["gulp", "task", "modules", "module", "factory"],
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -36,7 +36,7 @@ var _js_browserify = (function() {
                     .pipe(source(outputFile))
                     .pipe(buffer())
                     .pipe(gif(!production, sourcemaps.init({loadMaps: true})))
-                    .pipe(uglify())
+                    .pipe(gif(!production, uglify()))
                     .on('error', onError)
                     .pipe(gif(!production, sourcemaps.write('./')))
                     .pipe(gulp.dest(outputPath))

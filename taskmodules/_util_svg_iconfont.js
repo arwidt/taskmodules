@@ -1,6 +1,6 @@
-"use strict";
 
 var _util_svg_iconfont = (function() {
+    "use strict";
 
     var gulp            = require('gulp');
     var iconfont        = require('gulp-iconfont');
