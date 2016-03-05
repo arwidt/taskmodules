@@ -1,6 +1,6 @@
 {
   "name": "taskmodules",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Tasks wrapped in factories for easier use in async environment.",
   "main": "index.js",
   "scripts": {
