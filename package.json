@@ -1,6 +1,6 @@
 {
   "name": "taskmodules",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Tasks wrapped in factories for easier use in special cases.",
   "keywords": [
     "gulp",
@@ -9,6 +9,11 @@
     "module",
     "factory"
   ],
+  "repository" :
+  {
+    "type" : "git",
+    "url" : "git@github.com:arwidt/taskmodules.git"
+  },
   "files": [
     "index.js",
     "taskmodules/"
@@ -16,6 +21,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bugs": {
+    "url" : "https://github.com/arwidt/taskmodules/issues",
+    "email" : "arwidt@gmail.com"
   },
   "author": "Arwid Thornström (arwidt@gmail.com)",
   "license": "ISC",
