@@ -8,6 +8,8 @@ var _style_sass = (function() {
     var rename          = require('gulp-rename');
     var plumber         = require('gulp-plumber');
     var cssnano         = require('gulp-cssnano');
+    var gutil           = require('gulp-util');
+
 
     var _fact = {
         create: function(sourceFile, outputFile, outputPath, isAsync, production) {
@@ -21,7 +23,9 @@ var _style_sass = (function() {
                 }
 
                 var onError = function (err) {
-                    console.log(err.red);
+                    gutil.beep();
+                    gutil.log(err);
+                    this.emit('end');
                 };
 
                 return gulp.src(sourceFile)
