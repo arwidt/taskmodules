@@ -21,7 +21,6 @@ var _style_sass = (function() {
                 }
 
                 var onError = function (err) {
-                    gutil.beep();
                     console.log(err.red);
                 };
 
