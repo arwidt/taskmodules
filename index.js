@@ -1,23 +1,45 @@
 
-var js_browserify      = require('taskmodule__browserify');
-var style_sass         = require('taskmodule__sass');
-var style_svgiconfont  = require('taskmodule__svgiconfont');
-var util_copy          = require('taskmodule__copy');
-var util_delete        = require('taskmodule__delete');
+
+// var style_svgiconfont  = require('taskmodule__svgiconfont');
+// var util_copy          = require('taskmodule__copy');
+// var util_delete        = require('taskmodule__delete');
 
 var _index = (function() {
 
     var _inst = {
         js: {
-            browserify: js_browserify
+            get browserify() {
+                try {
+                    console.log(require.resolve("taskmodule__browserify"));
+                } catch(e) {
+                    console.error("taskmodule__browserify is not found run 'npm i taskmodule__browserify'");
+                    process.exit(e.code);
+                }
+                return require('taskmodule__browserify');
+
+            }
         },
         style: {
-            sass: style_sass,
-            svgIconFont: style_svgiconfont
+            get sass() {
+                try {
+                    console.log(require.resolve("taskmodule__sass"));
+                } catch(e) {
+                    console.error("taskmodule__sass is not found run 'npm i taskmodule__sass'");
+                    process.exit(e.code);
+                }
+                return require('taskmodule__sass');
+            },
+            get svgIconFont() {
+                return null;
+            }
         },
         util: {
-            copy: util_copy,
-            del: util_delete
+            get copy() {
+                return null;
+            },
+            get del() {
+                return null;
+            }
         }
     };
 

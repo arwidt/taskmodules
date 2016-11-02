@@ -7,15 +7,15 @@ var taskmodules     = require('./index.js');
 gulp.task('default', function(done) {
 
     async.series([
-        taskmodules.js.browserify.create('src/js/main.js', 'main.js', 'dist/js/', false, false),
-        taskmodules.style.svgIconFont.create('assets/icons/', '_icon-font', 'src/scss/iconfont/', '_icon-font.scss', true, false),
-        taskmodules.style.sass.create('src/scss/main.scss', 'main.css', 'dist/css/', false, false)
+        taskmodules.js.browserify('test/js/main.js', 'dist/js/main.min.js'),
+        // taskmodules.style.svgIconFont.create('assets/icons/', '_icon-font', 'src/scss/iconfont/', '_icon-font.scss', true, false),
+        taskmodules.style.sass('src/scss/main.scss', 'dist/css/main.css')
     ], function() {
         console.log("SERIES COMPLETE");
         async.parallel([
-            taskmodules.js.browserify.create('src/js/main.js', 'main.js', 'dist/js/', false, false),
-            taskmodules.style.svgIconFont.create('assets/icons/', '_icon-font', 'src/scss/iconfont/', '_icon-font.scss', true, false),
-            taskmodules.style.sass.create('src/scss/main.scss', 'main.css', 'dist/css/', false, false)
+            taskmodules.js.browserify('test/js/main.js', 'dist/js/main2.min.js'),
+            // taskmodules.style.svgIconFont.create('assets/icons/', '_icon-font', 'src/scss/iconfont/', '_icon-font.scss', true, false),
+            taskmodules.style.sass('src/scss/main.scss', 'dist/css/main.css')
         ], function() {
             console.log("PARALLEL COMPLETE");
             done();
