@@ -1,0 +1,39 @@
+@font-face {
+  font-family: "_icon-font";
+  src: url('_icon-font.woff') format('woff'),
+  url('_icon-font.ttf') format('truetype');
+}
+%icon {
+  font-family: "_icon-font";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  text-decoration: none;
+  text-transform: none;
+  vertical-align: top;
+}
+@function icon-char($filename) {
+  $char: "";
+
+@if $filename == icon_cross {
+$char: "E001";
+}
+@if $filename == icon_crosscircle {
+$char: "E002";
+}
+@return $char;
+}
+@mixin icon($filename, $insert: before) {
+  &:#{$insert} {
+	@extend %icon;
+	content: icon-char($filename);
+  }
+}
+.icon-icon_cross {
+  @include icon(icon_cross);
+}
+.icon-icon_crosscircle {
+  @include icon(icon_crosscircle);
+}

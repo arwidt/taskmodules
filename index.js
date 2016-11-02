@@ -1,7 +1,9 @@
 
-var js_browserify   = require('./taskmodules/_js_browserify.js');
-var style_sass      = require('./taskmodules/_style_sass.js');
-var util_svg_iconfont    = require('./taskmodules/_util_svg_iconfont.js');
+var js_browserify      = require('taskmodule__browserify');
+var style_sass         = require('taskmodule__sass');
+var style_svgiconfont  = require('taskmodule__svgiconfont');
+var util_copy          = require('taskmodule__copy');
+var util_delete        = require('taskmodule__delete');
 
 var _index = (function() {
 
@@ -10,10 +12,12 @@ var _index = (function() {
             browserify: js_browserify
         },
         style: {
-            sass: style_sass
+            sass: style_sass,
+            svgIconFont: style_svgiconfont
         },
-        utils: {
-            svgIconFont: util_svg_iconfont
+        util: {
+            copy: util_copy,
+            del: util_delete
         }
     };
 
