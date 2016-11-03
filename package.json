@@ -34,8 +34,15 @@
     }
   ],
   "dependencies": {
+    "taskmodule__sass": "^0.9.4"
   },
   "devDependencies": {
-    "jquery": "^2.2.1"
+    "async": "^2.1.2",
+    "gulp": "^3.9.1",
+    "jquery": "^3.1.1",
+    "node-sass": "^3.11.0",
+    "taskmodule__browserify": "^0.9.4",
+    "taskmodule__copy": "^1.0.5",
+    "taskmodule__delete": "^0.9.5"
   }
 }

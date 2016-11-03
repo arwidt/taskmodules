@@ -10,9 +10,9 @@ var _index = (function() {
         js: {
             get browserify() {
                 try {
-                    console.log(require.resolve("taskmodule__browserify"));
+                    require.resolve("taskmodule__browserify");
                 } catch(e) {
-                    console.error("taskmodule__browserify is not found run 'npm i taskmodule__browserify'");
+                    console.error("taskmodule__browserify is not found, run 'npm i taskmodule__browserify'");
                     process.exit(e.code);
                 }
                 return require('taskmodule__browserify');
@@ -22,9 +22,9 @@ var _index = (function() {
         style: {
             get sass() {
                 try {
-                    console.log(require.resolve("taskmodule__sass"));
+                    require.resolve("taskmodule__sass");
                 } catch(e) {
-                    console.error("taskmodule__sass is not found run 'npm i taskmodule__sass'");
+                    console.error("taskmodule__sass is not found, run 'npm i taskmodule__sass'");
                     process.exit(e.code);
                 }
                 return require('taskmodule__sass');
@@ -35,10 +35,22 @@ var _index = (function() {
         },
         util: {
             get copy() {
-                return null;
+                try {
+                    require.resolve("taskmodule__copy");
+                } catch(e) {
+                    console.error("taskmodule__copy is not found, run 'npm i taskmodule__copy'");
+                    process.exit(e.code);
+                }
+                return require('taskmodule__copy');
             },
             get del() {
-                return null;
+                try {
+                    require.resolve("taskmodule__delete");
+                } catch(e) {
+                    console.error("taskmodule__delete is not found, run 'npm i taskmodule__delete'");
+                    process.exit(e.code);
+                }
+                return require('taskmodule__delete');
             }
         }
     };
