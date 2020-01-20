@@ -1,5 +1,10 @@
 # taskmodules
 
+## NOT MAINTAINED
+**I recommend you to use something else, like Webpack or next.js**  
+https://webpack.js.org/  
+https://nextjs.org/  
+
 Modular gulp or grunt tasks wrapped in a npm module because I wanted more flexibility when setting up the order of when tasks are called. What tasks need to be in series and what tasks can run parallel.
 
 ## Install
