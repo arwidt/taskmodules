@@ -40,7 +40,7 @@
     "async": "^2.6.0",
     "gulp": "^3.9.1",
     "jquery": "^3.3.1",
-    "node-sass": "^4.7.2",
+    "node-sass": "^7.0.0",
     "taskmodule__browserify": "^0.9.4",
     "taskmodule__copy": "^1.0.5",
     "taskmodule__delete": "^0.9.5"
